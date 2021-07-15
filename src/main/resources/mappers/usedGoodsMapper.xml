@@ -7,6 +7,6 @@
  	 SELECT
  	 	*
  	 FROM
- 	 `used_goods`
+ 	 	`used_goods`
  	 </select>
  </mapper>
