@@ -13,7 +13,7 @@ public class ReviewRestController {
 	
 	@Autowired
 	private ReviewBO reviewBO;
-	// 요청 URL : http://localhost/8080/lesson03/ex01
+	// 요청 URL : http://localhost:8080/lesson03/ex01
 	
 	@RequestMapping("/lesson03/ex01")
 	public Review ex01(
@@ -25,4 +25,26 @@ public class ReviewRestController {
 		System.out.println("### id : " + id);
 		return reviewBO.getReview(id);
 	}
+	
+	// 요청 URL: http://localhost/lesson03/ex02
+	@RequestMapping("/lesson03/ex02")
+	public String ex02() {
+		Review review = new Review();
+		review.setStoreName("보람 삼겹살");
+		review.setMenu("삼겹혼밥세트");
+		review.setUserName("신보람");
+		review.setPoint(4.5);
+		review.setReview("혼자 먹기 적당하네요.");
+		
+		int row = reviewBO.insertReview(review); // insert된 row수를 리턴 받는다.
+		
+		return "success row count: " + row; // @ResponseBody로 인해 String 값 자체가 responseBody에 담긴다.
+	}
+	// 요청 URL: http://localhost/lesson03/ex02/2
+	@RequestMapping("/lesson03/ex02/2")
+	public String ex02_2() {
+		int row = reviewBO.insertReviewAsField("도미노피자", "콤비네이션R", "신바다", 5.0, "역시 맛있다!!!");
+		return "success row count:" + row;
+	}
+	
 }

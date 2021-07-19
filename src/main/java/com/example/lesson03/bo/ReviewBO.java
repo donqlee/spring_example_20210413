@@ -15,5 +15,13 @@ public class ReviewBO {
 	public Review getReview(int id) {
 		return reviewDAO.selectReview(id);
 	}
+	
+	public int insertReview(Review review) {
+		return reviewDAO.insertReview(review);
+	}
+	
+	public int insertReviewAsField(String storeName, String menu, String userName, double point, String review){ 
+		return reviewDAO.insertReviewAsField(storeName, menu, userName, point, review);
+	}
 
 }
