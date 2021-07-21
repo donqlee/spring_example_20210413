@@ -47,4 +47,23 @@ public class ReviewRestController {
 		return "success row count:" + row;
 	}
 	
+	// 요청 URL : http://localhost:8080/lesson03/ex03?id=23&review=삼결살은 역시 맛있어~~~
+	@RequestMapping("/lesson03/ex03")
+	public String ex03(
+			@RequestParam("id") int id,
+			@RequestParam("review") String review) {
+		
+		int row = reviewBO.updateReview(id, review);
+		return "변경 완료" + row;
+	}
+	
+	// 요창 URL : http://localhost:8080/lesson03/ex04?id=23
+	@RequestMapping("/lesson03/ex04")
+	public String ex04(
+			@RequestParam("id") int id) {
+		int row = reviewBO.deleteReviewById(id);
+		return "삭제 완료 " + row; 
+	}
+	
+	
 }
